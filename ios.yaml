@@ -1,0 +1,15 @@
+---
+
+- name: Cisco IOS Playbook
+  hosts: cisco_router
+  connection: network_cli
+  gather_facts: no
+  tasks:
+    - name: SHOW VERSION
+      ios_command:
+        commands: show version
+
+    - name: CONFIGURE SNMP COMMUNITY
+      ios_config:
+        commands: snmp-server community ntc-blog RW
+        backup: true
