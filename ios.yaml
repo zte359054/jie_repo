@@ -5,7 +5,7 @@
   connection: network_cli
   gather_facts: no
   tasks:
-    - name: SHOW VERSION
+    - name: SHOW IP ROUTE
       ios_command:
         commands: show ip route
       register: route
