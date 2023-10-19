@@ -8,7 +8,10 @@
     - name: SHOW VERSION
       ios_command:
         commands: show ip route
-
+      register: route
+    - name: debug show ip route
+      debug:
+        msg: "{{ route }}"
     - name: CONFIGURE SNMP COMMUNITY
       ios_config:
         commands: snmp-server community ntc-blog RW
