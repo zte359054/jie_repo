@@ -1,0 +1,18 @@
+---
+
+- name: Cisco IOS Playbook
+  hosts: cisco_router
+  connection: network_cli
+  gather_facts: no
+  tasks:
+    - name: SHOW IP ROUTE
+      ios_command:
+        commands: show ip route
+      register: route
+    - name: debug show ip route
+      debug:
+        msg: "{{ route }}"
+    - name: CONFIGURE SNMP COMMUNITY
+      ios_config:
+        commands: snmp-server community ntc-blog RW
+        backup: true
